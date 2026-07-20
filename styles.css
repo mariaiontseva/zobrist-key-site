@@ -176,6 +176,12 @@ img { max-width: 100%; display: block; }
 .nav a { color: var(--text-2); }
 .nav a.is-cta { color: var(--accent); }
 
+/* On narrow screens the four inline links can't fit without pushing the
+   sole CTA off-screen. Keep only Contact — the single CTA per spec. */
+@media (max-width: 560px) {
+  .nav a:not(.is-cta) { display: none; }
+}
+
 /* =========================================================
    Hero
    ========================================================= */
