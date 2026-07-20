@@ -199,7 +199,54 @@ img { max-width: 100%; display: block; }
   width: min(38vw, 360px);
   height: min(50vw, 470px);
   background: rgba(243, 245, 248, .09);
+  overflow: hidden;
+  isolation: isolate;
   pointer-events: none;
+}
+
+/* A narrow, cool-toned highlight is clipped by the knight's mask, so the
+   light only travels across the mark itself. Most of the cycle is a pause —
+   the glint should feel occasional and deliberate, not like a loading state. */
+.hero__watermark::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -70%;
+  width: 42%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(132, 203, 220, .06) 18%,
+    rgba(132, 203, 220, .42) 42%,
+    rgba(255, 255, 255, .78) 50%,
+    rgba(132, 203, 220, .34) 58%,
+    transparent 100%
+  );
+  filter: blur(4px);
+  opacity: 0;
+  transform: translate3d(0, 0, 0) skewX(-16deg);
+  animation: hero-knight-glint 6.5s linear 1s infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes hero-knight-glint {
+  0%, 42% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) skewX(-16deg);
+  }
+  48% {
+    opacity: .55;
+    transform: translate3d(115%, 0, 0) skewX(-16deg);
+  }
+  62% {
+    opacity: 1;
+    transform: translate3d(250%, 0, 0) skewX(-16deg);
+  }
+  78%, 100% {
+    opacity: 0;
+    transform: translate3d(430%, 0, 0) skewX(-16deg);
+  }
 }
 
 .hero__eyebrow {
@@ -514,5 +561,6 @@ img { max-width: 100%; display: block; }
 
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal] { opacity: 1 !important; transform: none !important; transition: none; }
+  .hero__watermark::after { animation: none; }
   html { scroll-behavior: auto; }
 }
