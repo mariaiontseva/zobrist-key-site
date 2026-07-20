@@ -15,6 +15,7 @@ main.js         — reveal-on-scroll, sticky-header compaction, form UI state
 assets/
   knight.svg        — knight mark, fill: currentColor
   knight-black.svg  — knight mark, fill #000 (used as CSS mask for tinting)
+  favicon.svg       — white knight on black, square browser icon
 ```
 
 ## Run locally
