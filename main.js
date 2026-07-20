@@ -5,26 +5,42 @@
 (function () {
   'use strict';
 
-  /* ---------- Reveal on scroll (IntersectionObserver) ---------- */
+  /* ---------- Reveal on scroll (IntersectionObserver) ----------
+     Fails safe: any problem reveals everything rather than hiding it. */
+  function revealAll(els) {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
   function initReveal() {
     var els = document.querySelectorAll('[data-reveal]');
     if (!els.length) return;
 
-    if (!('IntersectionObserver' in window)) {
-      els.forEach(function (el) { el.classList.add('is-in'); });
-      return;
-    }
+    // No IntersectionObserver support → just show everything.
+    if (!('IntersectionObserver' in window)) { revealAll(els); return; }
 
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-in');
-          io.unobserve(entry.target);
+    try {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      els.forEach(function (el) {
+        // Anything already in (or above) the viewport: reveal immediately,
+        // so above-the-fold content is never blank waiting on the async IO.
+        if (el.getBoundingClientRect().top < vh) {
+          el.classList.add('is-in');
+        } else {
+          io.observe(el);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
-    els.forEach(function (el) { io.observe(el); });
+    } catch (err) {
+      revealAll(els); // observer construction/observe threw → never hide content
+    }
   }
 
   /* ---------- Sticky header: toggle compact state past 20px ---------- */

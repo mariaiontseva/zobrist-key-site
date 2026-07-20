@@ -486,17 +486,23 @@ img { max-width: 100%; display: block; }
 }
 
 /* =========================================================
-   Reveal on scroll
+   Reveal on scroll — progressive enhancement.
+
+   Content is fully visible by default. The hidden-then-animate state
+   applies ONLY when JS is running (html.js, set by an inline head script
+   before first paint). So no-JS, a broken script, or a slow observer can
+   never leave a section as an empty block — the worst case is "no animation",
+   never "invisible content".
    ========================================================= */
-[data-reveal] {
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity .7s cubic-bezier(.22, .61, .36, 1),
               transform .7s cubic-bezier(.22, .61, .36, 1);
 }
-[data-reveal].is-in { opacity: 1; transform: none; }
+.js [data-reveal].is-in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none; }
+  .js [data-reveal] { opacity: 1 !important; transform: none !important; transition: none; }
   html { scroll-behavior: auto; }
 }
