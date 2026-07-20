@@ -275,8 +275,14 @@ img { max-width: 100%; display: block; }
   background: var(--hairline);
   border: 1px solid var(--hairline);
 }
-.hgrid--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+/* Why-us: four mirrored pairs → a fixed 2×2 so no cell is ever left empty.
+   Collapses to a single column on narrow screens. */
+.hgrid--pairs { grid-template-columns: repeat(2, 1fr); }
 .hgrid--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+
+@media (max-width: 560px) {
+  .hgrid--pairs { grid-template-columns: 1fr; }
+}
 
 .map-card {
   background: var(--bg);
