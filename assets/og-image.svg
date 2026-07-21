@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Zobrist Key — Poacher turned gamekeeper.</title>
+  <desc id="desc">Zobrist Key logo and motto on a black background.</desc>
+
+  <rect width="1200" height="630" fill="#010102"/>
+  <rect x="24" y="24" width="1152" height="582" rx="2" fill="none" stroke="#F3F5F8" stroke-opacity="0.12"/>
+
+  <g font-family="Manrope, Helvetica Neue, Helvetica, Arial, sans-serif">
+    <text x="82" y="112" fill="#84CBDC" font-size="15" font-weight="600" letter-spacing="3.6">PRIVATE SECURITY · WORLDWIDE</text>
+    <text x="82" y="166" fill="#F3F5F8" font-size="34" font-weight="800" letter-spacing="-1">zobrist key</text>
+
+    <rect x="82" y="226" width="3" height="126" fill="#84CBDC"/>
+    <text x="116" y="276" fill="#F3F5F8" font-size="66" font-weight="400" letter-spacing="-2.3">Poacher turned</text>
+    <text x="116" y="352" fill="#F3F5F8" font-size="66" font-weight="400" letter-spacing="-2.3">gamekeeper.</text>
+
+    <text x="82" y="548" fill="#ADB2B6" font-size="18" font-weight="500" letter-spacing="0.4">zobristkey.com</text>
+  </g>
+
+  <image href="favicon.svg" x="858" y="130" width="250" height="250"/>
+</svg>
