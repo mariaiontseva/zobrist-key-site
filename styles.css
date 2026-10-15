@@ -760,3 +760,17 @@ img { max-width: 100%; display: block; }
   color: var(--accent);
   width: fit-content;
 }
+
+/* Footer enquiries email */
+.site-footer__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.site-footer__email {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: var(--accent);
+}
