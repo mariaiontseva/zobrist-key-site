@@ -774,3 +774,23 @@ img { max-width: 100%; display: block; }
   letter-spacing: .01em;
   color: var(--accent);
 }
+
+/* Honeypot (spam trap) — kept out of the visual/AX flow */
+.hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Form error (fallback to direct email) */
+.form__error {
+  margin: 4px 0 0;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.form__error a { color: var(--accent); }
