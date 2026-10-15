@@ -738,3 +738,25 @@ img { max-width: 100%; display: block; }
 @media (max-width: 720px) {
   .cats { grid-template-columns: repeat(2, 1fr); }   /* 2 also divides 10 */
 }
+
+/* Direct enquiries email (contact section) */
+.contact__email {
+  margin: clamp(26px, 4vw, 34px) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.contact__email-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.contact__email a {
+  font-size: clamp(19px, 2.4vw, 23px);
+  font-weight: 400;
+  letter-spacing: -.01em;
+  color: var(--accent);
+  width: fit-content;
+}
